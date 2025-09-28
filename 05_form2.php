@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div>
             <select name="item_key">
                 <?php foreach ($items as $item): ?>
-                    <option value="<?= $item ?>"><?= $item ?></option>
+                    <option value="<?= $item ?>" <?= $item == $item_key ? 'selected' : ''; ?>><?= $item ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
