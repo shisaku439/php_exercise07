@@ -3,13 +3,8 @@
 $msg = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $score = filter_input(INPUT_GET, 'score');
-
-    if ($score >= 60) {
-        $msg = '合格です';
-    } else {
-        $msg = '不合格です';
-    }
+    $msg = filter_input(INPUT_GET, 'judge_ment');
+    $msg .= 'です';
 }
 ?>
 

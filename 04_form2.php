@@ -5,7 +5,7 @@ $tel = '';
 $email = '';
 $item_key = '';
 $err_msgs = [];
-$msgs = [];
+$is_msgs = false;
 
 $items = ['バッグ', '靴', '時計', 'ネックレス', 'ピアス'];
 
@@ -27,12 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $err_msgs[] = 'メールアドレスを入力してください';
     }
 
-    //送信内容の表示
-    if (count($err_msgs) == 0) {
-        $msgs[] = "氏名：　　　　　{$name}";
-        $msgs[] = "電話番号：　　　{$tel}";
-        $msgs[] = "メールアドレス：{$email}";
-        $msgs[] = "購入するもの：　{$item_key}";
+    //送信内容の表示フラグ
+    if (empty($err_msgs)) {
+        $is_msgs = true;
     }
 }
 
@@ -89,13 +86,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </form>
 
+
     <!-- 送信内容の表示 -->
-    <?php if (!empty($msgs)): ?>
-        <h3>以下の内容が送信されました。</h3>
-        <?php foreach ($msgs as $msg): ?>
-            <div><?= $msg ?></div>
-        <?php endforeach; ?>
-    <?php endif; ?>
+    <table>
+        <?php if ($is_msgs): ?>
+            <h3>以下の内容が送信されました。</h3>
+            <tr>
+                <td>氏名：</td>
+                <td><?= $name ?></td>
+            </tr>
+            <tr>
+                <td>電話番号：</td>
+                <td><?= $tel ?></td>
+            </tr>
+            <tr>
+                <td>メールアドレス：</td>
+                <td><?= $email ?></td>
+            </tr>
+            <tr>
+                <td>購入するもの：</td>
+                <td><?= $item_key ?></td>
+            </tr>
+        <?php endif; ?>
+    </table>
 
 </body>
 

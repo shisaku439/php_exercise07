@@ -87,14 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </form>
 
-    <!-- 送信内容の表示 -->
-    <?php if (!empty($msgs)): ?>
-        <h3>以下の内容が送信されました。</h3>
-        <?php foreach ($msgs as $msg): ?>
-            <div><?= $msg ?></div>
-        <?php endforeach; ?>
-    <?php endif; ?>
-
 </body>
 
 </html>

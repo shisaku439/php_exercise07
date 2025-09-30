@@ -2,6 +2,7 @@
 
 $score = '';
 $err_msg = '';
+$judge_ment = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $score = $_POST['score'];
@@ -9,7 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $err_msg = '点数が入力されていません。';
     } else {
 
-        header('Location: 03_judge_ment.php?msg=' . $score);
+        if ($score >= 60) {
+            $judge_ment = '合格';
+        } else {
+            $judge_ment = '不合格';
+        }
+        header('Location: 03_judge_ment.php?judge_ment=' . $judge_ment);
         exit;
     }
 }
