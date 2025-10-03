@@ -88,9 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     <!-- 送信内容の表示 -->
-    <table>
-        <?php if ($is_msgs): ?>
-            <h3>以下の内容が送信されました。</h3>
+    <?php if ($is_msgs): ?>
+        <h3>以下の内容が送信されました。</h3>
+        <table>
             <tr>
                 <td>氏名：</td>
                 <td><?= $name ?></td>
@@ -107,8 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <td>購入するもの：</td>
                 <td><?= $item_key ?></td>
             </tr>
-        <?php endif; ?>
-    </table>
+        </table>
+    <?php endif; ?>
 
 </body>
 
